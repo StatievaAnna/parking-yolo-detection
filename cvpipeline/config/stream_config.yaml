@@ -1,0 +1,14 @@
+{
+  "streams": {
+    "1": "rtsp://45.159.210.70:8554/cam1",
+    "2": "rtsp://45.159.210.70:8554/cam2",
+    "3": "rtsp://45.159.210.70:8554/cam3",
+    "4": "rtsp://45.159.210.70:8554/cam4"
+  },
+  "masks_3d_path": "cvpipeline/prepeared_data/all_masks/masks_3d",
+  "masks_2d_path": "cvpipeline/prepeared_data/all_masks/masks_2d",
+  "places_3d_points_path": "cvpipeline/prepeared_data/all_points/places_3d_points",
+  "map_path": "cvpipeline/prepeared_data/all_points/map.npy",
+  "camera_points_path": "cvpipeline/prepeared_data/all_points/camera_points.npy",
+  "top_view_path": "cvpipeline/CHAD/imgs/top_view.png"
+}
