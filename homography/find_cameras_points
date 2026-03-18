@@ -1,0 +1,48 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import cv2
+
+class cameraSelecter():
+    def __init__(self, img, window_name):
+        self.img_copy = img.copy()
+        self.window_name = window_name
+        self.cameras_points = {}
+        self.camera_id = 0
+
+
+    def mouse_callback(self, event, x, y, flags, param):
+        if event == cv2.EVENT_LBUTTONDOWN:
+            self.cameras_points[self.camera_id] = (x, y)
+            self.camera_id += 1
+
+            cv2.circle(self.img_copy, (x, y), 5, (0, 255, 0), -1)
+            cv2.imshow(self.window_name, self.img_copy)
+
+    def find_camera_points(self):
+        
+        cv2.namedWindow(self.window_name, cv2.WINDOW_NORMAL)
+        cv2.imshow(self.window_name, self.img_copy)
+        cv2.setMouseCallback(self.window_name, self.mouse_callback)
+
+        print("Select points. Put 'q' for finish.")
+
+        while True:
+            key = cv2.waitKey(1) & 0xFF
+            if key == ord('q'):
+                break
+
+        cv2.destroyAllWindows()
+        return np.array(self.cameras_points)
+    
+
+top_view_path = "CHAD/imgs/top_view.png"
+top_view = cv2.imread(top_view_path)
+    
+selecter = cameraSelecter(top_view, "Cameras selecting")
+map = selecter.find_camera_points()
+
+np.save("camera_points.npy", map)
+
+result = np.load('camera_points.npy', allow_pickle=True).item()
+
+print(result)
