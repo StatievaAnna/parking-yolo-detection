@@ -140,13 +140,13 @@ def show_places_on_perspective(perspective_path, bird_view_path, H_path, map_pat
 # show_places_on_perspective(perspective_path, bird_view_path, H_path, map_path)
 
 class RectConstructor():
-    def __init__(self, camera_id, flow_id, save_path, C=0.5):
+    def __init__(self, camera_id, flow_id, C=0.5):
         self.cfg = self.load_stream_config()
 
         map_path = self.cfg.get("map_path", "")
         self.top_map = np.load(map_path, allow_pickle=True).item()
 
-        H_path = self.cfg.get('H_path', "") + f"/camera_id.npy"
+        H_path = self.cfg.get('H_path', "") + f"/{camera_id}.npy"
         self.H = np.load(H_path)
 
         camera_points_path = self.cfg.get("camera_points_path", "")
