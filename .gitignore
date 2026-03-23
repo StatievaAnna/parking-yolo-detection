@@ -1,0 +1,8 @@
+CHAD_meta
+venv
+# cvpipeline/crop_flows
+
+cvpipeline/results_examples
+start_streams.sh
+homography/homography_auto.py
+.DS_Store
