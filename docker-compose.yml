@@ -1,0 +1,11 @@
+services:
+  cvpipeline:
+    build:
+      context: .
+      dockerfile: cvpipeline/Dockerfile
+    container_name: cvpipeline
+    ports:
+      - "8554:8554"
+    volumes:
+      - ./mediamtx/mediamtx.yml:/app/mediamtx/mediamtx.yml:ro. # монтируем в образ
+    restart: always
